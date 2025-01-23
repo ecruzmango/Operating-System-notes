@@ -69,4 +69,63 @@ __EXAMPLE__
 ```
 
 Even though we only have one processor, we are able to have all 4 programs running at the same time. How is that possible?
-As it turns out the system has a very large number of virtual CPUs.
+As it turns out the system has a very large number of virtual CPUs. Turning a single CPU (or a small set of them) into a seemingly infinite number of CPUs and thus allowing many programs to seemingly run at once is what we call virtualizing the CPU.
+
+As the book states, the ability to run multiple programs at once reaches all sorts of new questions. __For Example__,  if two programs want to run at a particular time, which should run? This question is answered by a policy of the OS.
+
+## 2.2 Virtualizing Memory (simplified)
+
+Basic Memory Model:
+
+Memory is fundamentally an array of bytes
+*    To read: you need an address
+*    To write: you need both an address and data
+*   Both program instructions and data are stored in memory
+
+
+The Example Program:
+
+It allocates memory using malloc()
+Stores a value at memory address 0x200000
+Increments this value in a loop
+Each running instance is identified by a unique Process ID (PID)
+
+
+The Key Observation:
+
+When multiple instances of the same program run simultaneously
+Each instance shows it's using the same memory address (0x200000)
+Yet they don't interfere with each other
+Each instance updates its "own" memory independently
+
+
+The Explanation - Virtual Memory:
+
+This is possible because the OS provides memory virtualization
+Each process gets its own "virtual address space"
+The address 0x200000 in each process maps to different physical memory locations
+Programs think they have their own private memory
+The OS manages the translation between virtual and physical addresses behind the scenes
+
+
+Why This Matters:
+
+Programs can be written as if they have the entire memory to themselves
+They don't need to worry about interfering with other programs
+The OS handles the complexity of sharing physical memory
+This is a key example of how operating systems provide abstraction and isolation
+
+
+
+This is a fundamental concept in operating systems - the virtualization of resources (in this case, memory) to provide each process with the illusion of having its own private memory space, while efficiently managing the actual physical memory underneath
+
+## 2.3 Concurrency
+
+[!NOTE]
+Take a look at the program below:
+
+```c
+
+
+
+```
