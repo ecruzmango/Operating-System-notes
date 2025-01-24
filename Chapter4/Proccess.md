@@ -35,3 +35,9 @@ Third, it simplifies program development. Programmers can write their applicatio
 
 | code | Heap | | Stack | 
 
+* **REGISTERS**: 
+
+* **I/O Information**:
+
+
+## 4.2 Process API
