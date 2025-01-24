@@ -13,8 +13,8 @@ A typical OS exports a few hundred system calls that are available to applicatio
 
 ## 2.1 Virtualizing The CPU 
 
-[!NOTE]
-Take a look at figure 2.1
+>[!NOTE]
+>Take a look at figure 2.1
 
 ```C
 #include <stdio.h>
