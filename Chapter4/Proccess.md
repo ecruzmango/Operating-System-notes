@@ -34,4 +34,4 @@ Third, it simplifies program development. Programmers can write their applicatio
 * **MEMORY**: this is one of the components of the machine state. The __instructions lie in memory__. Memory information includes what parts of memory the process can access and what data is stored there. The memory that the process can address is its `address space`
 
 | code | Heap | ___ | Stack | 
-| low address |
+
