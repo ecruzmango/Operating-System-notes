@@ -16,4 +16,5 @@ access.
 
 `limited direct execution` is what developers came up. The solution is simple, "__run the
 program directly on the CPU__. Thus, when the OS wishes to start a program running, it creates a process entry for it in a process list, allocates
-some memory for it, loads the program code into memory (from disk), locates its entry point (i.e., the main() routine or something similar), jumps to it, and starts runnin the user's code" [Pg.1-2 Arpaci]
+some memory for it, loads the program code into memory (from disk), locates its entry point (i.e., the main() routine or something similar), jumps to it, and starts running the user's code" [Pg.1-2 Arpaci]
+
