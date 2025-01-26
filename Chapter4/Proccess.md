@@ -97,6 +97,8 @@ This illustrates how the OS creates the environment necessary for a program to r
 ## 4.4 Process States
 
 __Running__: executing instructions
+
 __Ready__: Ready to run but currently not running
+
 __Blocked__: waiting for an event to happen 
 
