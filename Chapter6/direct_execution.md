@@ -18,3 +18,30 @@ access.
 program directly on the CPU__. Thus, when the OS wishes to start a program running, it creates a process entry for it in a process list, allocates
 some memory for it, loads the program code into memory (from disk), locates its entry point (i.e., the main() routine or something similar), jumps to it, and starts running the user's code" [Pg.1-2 Arpaci]
 
+__Simplified__:
+| OS              | Program |
+|-----------------|---------|
+| Allocate Memory for program |
+| load program into memory
+| set up stack with argc/argv
+| execute call main() 
+||Run main()
+|| Execute __return__ from main
+| free memory of process and remove from process list
+
+This rises a few issues. How can the OS make sure the program doesn't do anything that we don't want to do? Will it overwrite data that another process owns? How do we stop the process so we can time share the cpu?
+
+## 6.2 Restricted Operations
+
+* we need hardware support for a __"user mode"__ that is restricted (certain instructions that aren't allowed to be executed)
+* there will also be a unrestricted mode known as the __"kernel mode"__ or __"privileged mode"__
+* now that the process wont be able to break the rules, how do we allow it to read/write to the disk?
+
+>[!NOTE]
+>
+> In other words,
+> "THE CRUX: HOW TO PERFORM RESTRICTED OPERATIONS
+A process must be able to perform I/O and some other restricted operations, but without giving the process complete control over the system.
+How can the OS and hardware work together to do so" [pg.2 Arpaci]
+
+### sytem calls
