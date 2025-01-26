@@ -36,8 +36,67 @@ Third, it simplifies program development. Programmers can write their applicatio
 | code | Heap | | Stack | 
 
 * **REGISTERS**: 
+Registers are the fastest form of computer memory, built right into the CPU. 
+While main memory (RAM) might take dozens or hundreds of CPU cycles to access, registers can be accessed in a single cycle. 
+This makes them crucial for performance.
+
 
 * **I/O Information**:
-
+Processes interact with persistent storage devices
 
 ## 4.2 Process API
+
+These APIs, in some form, are available on any modern operating system.
+
+* Create a new process (fork)
+* Destroy a process (SIGKILL)
+* wait for process to stop running (waitpid())
+* Miscellaneous control - suspend/resume (kill(pid, SIGCONT))
+* Status - give info about process like running time 
+
+## 4.3 Process Creation
+The first thing that the OS must do to run a program is to load its code
+and any static data (e.g., initialized variables) into memory, into the address space of the process. Programs initially reside on disk (or, in some
+modern systems, flash-based SSDs) in some kind of executable format;
+thus, the process of loading a program and static data into memory requires the OS to read those bytes from disk and place them in memory
+somewhere
+* Early OSes loaded entire program into memory before executing 
+* modern OSes does this lazily by loading the code/data only as needed 
+
+Here's what the operating system does to prepare a program for execution:
+
+Memory Loading and Setup:
+
+Loads program code and static data from disk into memory
+Allocates memory for the run-time stack (for local variables, function parameters, return addresses)
+Initializes stack with main() arguments (argc, argv)
+Creates initial heap space for dynamic memory allocation (malloc/free)
+
+
+I/O Setup:
+
+Sets up file descriptors (in UNIX: standard input, output, error)
+Enables program to read input and display output
+
+
+Program Execution:
+
+After setup is complete, OS jumps to the program's main() function
+Control transfers from OS to the new process
+
+
+Key Concepts:
+
+Stack: Pre-allocated space for program's immediate function-related needs
+Heap: Grows dynamically as program requests memory via malloc()
+File Descriptors: Enable program I/O operations
+Process Initialization: Multi-step process to prepare program for execution
+
+This illustrates how the OS creates the environment necessary for a program to run properly and independently.
+
+## 4.4 Process States
+
+__Running__: executing instructions
+__Ready__: Ready to run but currently not running
+__Blocked__: waiting for an event to happen 
+
