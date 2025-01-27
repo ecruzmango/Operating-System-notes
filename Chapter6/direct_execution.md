@@ -44,4 +44,4 @@ This rises a few issues. How can the OS make sure the program doesn't do anythin
 A process must be able to perform I/O and some other restricted operations, but without giving the process complete control over the system.
 How can the OS and hardware work together to do so" [pg.2 Arpaci]
 
-### sytem calls
+### system calls
